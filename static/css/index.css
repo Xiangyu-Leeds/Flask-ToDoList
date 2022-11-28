@@ -1,0 +1,82 @@
+.question-ul li {
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.question-main {
+    flex: 1;
+    float: left;
+    width: 660px;
+    margin-left: 10px;
+    overflow: hidden;
+}
+
+#t1 {
+    color: #259;
+    font-size: 18px;
+    font-weight: 900;
+
+}
+
+.question-content {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.question-detail {
+    text-align: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.i1 {
+    width: 30px;
+    height: 30px;
+}
+
+.i2 {
+    width: 30px;
+    height: 30px;
+}
+
+
+.changeImg {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background: url('/static/duigou-weigouxuan.png') no-repeat;
+    background-size: cover;
+}
+
+.changeImg:hover {
+    background: url('/static/duigouzhong.png') no-repeat;
+    background-size: cover;
+}
+.changeImg1:hover {
+    background: url('/static/duigou-weigouxuan.png') no-repeat;
+    background-size: cover;
+}
+.changeImg1 {
+    width: 30px;
+    height: 30px;
+    background: url('/static/duigouzhong.png') no-repeat;
+    background-size: cover;
+}
+.changeImg3 {
+    width: 30px;
+    height: 30px;
+    background: url('/static/duigouzhong.png') no-repeat;
+    background-size: cover;
+}
+
+
+.changeImg2 {
+    width: 30px;
+    height: 30px;
+    background: url('/static/duigou-weigouxuan.png') no-repeat;
+    background-size: cover;
+}
+

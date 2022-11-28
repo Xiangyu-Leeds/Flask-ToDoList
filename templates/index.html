@@ -1,0 +1,55 @@
+{% extends  "base.html" %}
+{#the index and uncompleted tasks#}
+{% block title %}uncompleted{% endblock %}
+
+{% block head %}
+{% endblock %}
+{% block body %}
+  <div class="row" style="margin-top: 20px">
+    <div class="col"></div>
+    <div class="col-8">
+      <ul class="question-ul">
+        {% for event in events %}
+{#change tasks to complete#}
+          <div class="changeImg" onclick="change(this,{{ event.id }})"></div>
+          <div class="layui-btn-group>" style="float: right">
+{#modify a task#}
+            <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">
+              <a href="/modify?id={{ event.id }}">
+                <i class="layui-icon">&#xe642;</i>
+              </a>
+            </button>
+            {#delete a task#}
+            <button type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                    onclick="member_del1(this,{{ event.id }})">
+              <i class="layui-icon">&#xe640;</i>
+            </button>
+{#important a task#}
+            <button type="button" class="layui-btn layui-btn-primary layui-btn-sm"  id="234" onclick="important(this,{{ event.id }})">
+              <svg t="1667805182041" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                   xmlns="http://www.w3.org/2000/svg" p-id="4645" width="16" height="16">
+                <path d="M610.304 384a51.2 51.2 0 0 0 38.656 25.6l194.048 27.904a12.8 12.8 0 0 1 7.168 21.76l-140.544 135.936a51.2 51.2 0 0 0-14.592 45.056l33.024 192a12.8 12.8 0 0 1-18.432 13.568l-173.824-90.88a51.2 51.2 0 0 0-47.616 0l-173.824 90.88a12.8 12.8 0 0 1-18.432-13.568l33.024-192a51.2 51.2 0 0 0-14.592-45.056L173.824 460.8a12.8 12.8 0 0 1 7.168-21.76L375.04 409.6a51.2 51.2 0 0 0 38.656-25.6l86.784-174.848a12.8 12.8 0 0 1 23.04 0zM512 25.6a56.064 56.064 0 0 0-51.2 31.232l-115.712 232.96A51.2 51.2 0 0 1 307.2 317.44L48.384 354.816A56.064 56.064 0 0 0 17.152 450.56L204.8 631.808a51.2 51.2 0 0 1 14.848 45.056l-44.288 256a56.32 56.32 0 0 0 80.64 58.88l230.4-120.832a51.2 51.2 0 0 1 47.616 0l230.4 120.832a56.32 56.32 0 0 0 81.92-59.136l-44.288-256a51.2 51.2 0 0 1 17.152-44.8l187.136-181.248a56.064 56.064 0 0 0-31.232-95.744L716.8 317.44a51.2 51.2 0 0 1-38.4-27.648L563.2 56.832A56.064 56.064 0 0 0 512 25.6z"
+                      p-id="4646" fill="#8a8a8a"></path>
+              </svg>
+            </button>
+          </div>
+          <li>
+            <div class="question-main">
+              {#the information of a task#}
+              <p style="font-size:20px">{{ event.module_title }}:{{ event.assessment_title }}</p>
+              <p style="color: #bababa">{{ event.description }}</p>
+              <p style="color: #919257" class="calendar">
+                <svg t="1667800609895" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                     xmlns="http://www.w3.org/2000/svg" p-id="3614" width="24" height="24">
+                  <path d="M725.333333 170.666667h74.709334C864.853333 170.666667 917.333333 223.189333 917.333333 288.096V799.893333C917.333333 864.757333 864.832 917.333333 800.042667 917.333333H223.957333C159.146667 917.333333 106.666667 864.810667 106.666667 799.904V288.106667C106.666667 223.242667 159.168 170.666667 223.957333 170.666667H298.666667v-32a32 32 0 0 1 64 0v32h298.666666v-32a32 32 0 0 1 64 0v32z m0 64v32a32 32 0 0 1-64 0v-32H362.666667v32a32 32 0 0 1-64 0v-32h-74.709334A53.354667 53.354667 0 0 0 170.666667 288.096V799.893333A53.301333 53.301333 0 0 0 223.957333 853.333333h576.085334A53.354667 53.354667 0 0 0 853.333333 799.904V288.106667A53.301333 53.301333 0 0 0 800.042667 234.666667H725.333333z m-10.666666 224a32 32 0 0 1 0 64H309.333333a32 32 0 0 1 0-64h405.333334zM586.666667 618.666667a32 32 0 0 1 0 64H309.333333a32 32 0 0 1 0-64h277.333334z"
+                        p-id="3615" fill="#919257"></path>
+                </svg>
+                {{ event.due_year }}-{{ event.due_month }}-{{ event.due_day }}</p>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col"></div>
+  </div>
+{% endblock %}

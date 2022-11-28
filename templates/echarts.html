@@ -1,0 +1,94 @@
+{% extends  "base.html" %}
+{#the charts can describe the information of these tasks#}
+{% block title %}statistics{% endblock %}
+
+{% block head %}
+  <script src="{{ url_for('static',filename = 'js/echarts.js') }}"></script>
+
+{% endblock %}
+{% block body %}
+
+{#the colomn chart#}
+<div id="main" ></div>
+{#the pie chart#}
+<div id="main2"></div>
+
+{#the processes to create a chart#}
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main'));
+    // Specifies the configuration items and data for the chart
+    var option = {
+        title: {
+            {#the title of the chart#}
+            text: 'bar chart of Task completion status',
+            left: 'center',
+        },
+        tooltip: {},
+        legend: {
+            data: ['quantity']
+        },
+        xAxis: {
+            {#name of xAxis#}
+            data: ['uncompleted', 'completed', 'overdue', 'important']
+        },
+        yAxis: {},
+        series: [
+            {
+                name: 'number',
+                type: 'bar',
+                {#the data of these xAxis#}
+                data: [{{ a }}, {{ b }}, {{ c }}, {{ d }}]
+            }
+        ]
+    };
+    myChart.setOption(option);
+    var myChart2 = echarts.init(document.getElementById('main2'));
+
+    option2 = {
+  legend: {
+    orient: 'vertical',
+    x: 'left',
+          {#name of xAxis#}
+    data: ['uncompleted', 'completed', 'overdue', 'important']
+  },
+    title: {
+        {#the title of the chart#}
+            text: 'pie chart of Task completion status',
+            left: 'center',
+
+        },
+  series: [
+    {
+      type: 'pie',
+      radius: ['50%', '70%'],
+      avoidLabelOverlap: false,
+      label: {
+        show: false,
+        position: 'center'
+      },
+      labelLine: {
+        show: false
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: '20',
+          fontWeight: 'bold'
+        }
+      },
+           {#the data of these xAxis#}
+      data: [
+        { value: {{ a }}, name: 'uncompleted' },
+        { value: {{ b }}, name: 'completed' },
+        { value: {{ c }}, name: 'overdue' },
+        { value: {{ d }}, name: 'important' },
+      ]
+    }
+  ]
+};
+
+    myChart2.setOption(option2);
+
+
+</script>
+{% endblock %}
