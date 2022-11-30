@@ -165,9 +165,13 @@ def uncompleted_issue():
     event = EventModel.query.filter_by(id=request.args.get("id"))[0]
     if int(event.due_year) < datetime.now().year:
         event.status = 2
+    elif int(event.due_year) < datetime.now().year:
+        event.status = 0
     else:
         if int(event.due_month) < datetime.now().month:
             event.status = 2
+        elif int(event.due_month) < datetime.now().month:
+            event.status = 0
         else:
             if int(event.due_day) < datetime.now().day:
                 event.status = 2
